@@ -23,7 +23,10 @@ class ListUser extends Component {
   render() {
     return (
       <div className="page container pt-5 pb-5">
-        <Users listUser = {this.state.listUser} />
+        <h3 className="color-red border-bottom pb-3 mb-4">List Users</h3>
+        <div className="row">
+            <Users listUser = {this.state.listUser} />
+        </div>
       </div>
     )
   }
