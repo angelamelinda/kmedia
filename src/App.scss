@@ -20,6 +20,20 @@
   color: $dark-grey;
 }
 
+.color-white, .color-white-hover:hover {
+  color: $white;
+}
+
 .remove-underline, .remove-underline:hover {
   text-decoration: none;
+}
+
+.box-shadow-grey {
+  box-shadow: 0 0 2px rgba(0,0,0,.2);
+  border: 1px solid #ededed;
+  background: $white;
+}
+
+body {
+  background-color: #ededed!important;
 }
