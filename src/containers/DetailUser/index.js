@@ -15,7 +15,6 @@ class DetailUser extends Component {
       userPhoto:[],
     }
     this.refreshUserAlbum = this.refreshUserAlbum.bind(this);
-    this.refreshUserPhoto = this.refreshUserPhoto.bind(this);
   }
   componentWillMount() {
     this.refreshUserInformation();
@@ -37,17 +36,6 @@ class DetailUser extends Component {
         userPost: res.data
       })
     })
-  }
-  refreshUserPhoto(){
-    let userPhotoUrl;
-    this.state.userAlbum.map((album,id) => (
-      userPhotoUrl = "https://jsonplaceholder.typicode.com/albums/"+album.id+"/photos",
-      axios.get(userPhotoUrl).then ( res => {
-        this.setState({
-          userPhoto: res.data
-        });
-      })
-    ));
   }
   refreshUserAlbum(){
     let userAlbumUrl = "https://jsonplaceholder.typicode.com/albums/";
