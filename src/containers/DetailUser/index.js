@@ -22,11 +22,6 @@ class DetailUser extends Component {
     this.refreshUserPost();
     this.refreshUserAlbum();
   }
-  componentDidMount() {
-    console.log('opet');
-    console.log('anjing');
-    // this.refreshUserPhoto();
-  }
   refreshUserInformation(){
     let userUrl = "https://jsonplaceholder.typicode.com/users/"+this.props.match.params.id;
     return axios.get(userUrl).then ( res => {
@@ -45,8 +40,6 @@ class DetailUser extends Component {
   }
   refreshUserPhoto(){
     let userPhotoUrl;
-    console.log('aus');
-    console.log(this.state.userAlbum);
     this.state.userAlbum.map((album,id) => (
       userPhotoUrl = "https://jsonplaceholder.typicode.com/albums/"+album.id+"/photos",
       axios.get(userPhotoUrl).then ( res => {
@@ -54,9 +47,7 @@ class DetailUser extends Component {
           userPhoto: res.data
         });
       })
-    ))
-
-    console.log('ayam');
+    ));
   }
   refreshUserAlbum(){
     let userAlbumUrl = "https://jsonplaceholder.typicode.com/albums/";
