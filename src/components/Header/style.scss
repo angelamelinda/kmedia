@@ -1,0 +1,8 @@
+@import '../../assets/scss/variable.scss';
+
+header {
+  background-color: $blue-sea;
+  .logo img {
+    max-height: 25px;
+  }
+}
