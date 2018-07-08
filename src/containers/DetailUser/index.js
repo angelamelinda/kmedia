@@ -35,6 +35,8 @@ class DetailUser extends Component {
       alert('Please fill correctly');
     } else {
       this.props.addPost(new_post);
+      this.input_subject_post.value = '';
+      this.input_body_post.value = '';
     }
   }
   refreshUserInformation(){

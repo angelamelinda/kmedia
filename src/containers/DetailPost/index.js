@@ -58,12 +58,19 @@ class DetailPost extends Component {
       name: this.input_comment_name.value,
       postId: this.state.post.id
     }
-    let userCommentUrl = "https://jsonplaceholder.typicode.com/comments";
-    axios.post(userCommentUrl, newcomment).then( resp => {
-      this.setState({
-        comments: [...this.state.comments,resp.data]
+    if(newcomment.email == '' || newcomment.body == '' || newcomment.name == '') {
+      alert('Please fill correctly');
+    } else {
+      let userCommentUrl = "https://jsonplaceholder.typicode.com/comments";
+      axios.post(userCommentUrl, newcomment).then( resp => {
+        this.setState({
+          comments: [...this.state.comments,resp.data]
+        });
       });
-    });
+      this.input_comment_email.value = '';
+      this.input_comment_body.value = '';
+      this.input_comment_name.value = '';
+    }
   }
 
   updatePost(e){

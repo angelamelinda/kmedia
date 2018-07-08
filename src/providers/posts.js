@@ -85,7 +85,7 @@ class PostsProvider extends React.Component {
   render() {
     return (
       <PostsContext.Provider value={this.state}>
-        { this.state.posts.length > 0 ?  this.props.children : <div className="text-center pt-5 pb-5"><h2 className="color-blue-sea">Loading...</h2></div> }
+        { this.state.posts.length > 0 ?  this.props.children : <div className="loader d-flex align-items-center justify-content-center"><h2 className="color-white">Updating...</h2></div>}
       </PostsContext.Provider>
     )
   }
