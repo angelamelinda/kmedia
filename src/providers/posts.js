@@ -77,7 +77,6 @@ class PostsProvider extends React.Component {
   }
 
   searchById(post_id) {
-    console.log(this.state.posts, post_id);
     return this.state.posts.filter((post) => {
       return post.id == post_id;
     });
@@ -86,7 +85,7 @@ class PostsProvider extends React.Component {
   render() {
     return (
       <PostsContext.Provider value={this.state}>
-        { this.state.posts.length > 0 ?  this.props.children : "LOADING" }
+        { this.state.posts.length > 0 ?  this.props.children : <div className="text-center pt-5 pb-5"><h2 className="color-blue-sea">Loading...</h2></div> }
       </PostsContext.Provider>
     )
   }

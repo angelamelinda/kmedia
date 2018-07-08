@@ -51,7 +51,7 @@ class DetailAlbum extends Component {
           {
             this.state.users.map((user,id) => (
               (user.id == this.state.detailAlbum.userId) ?
-                user.name : ''
+                <Link className="remove-underline color-blue-sea color-red-hover" to={"/users/"+user.id}>{user.name}</Link> : ''
             ))
           }
       </p>

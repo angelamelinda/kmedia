@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class DetailPhotos extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ class DetailPhotos extends Component {
   render() {
     return(
       <div className="page container pt-5 pb-5">
+        <Link className="remove-underline color-blue-sea color-red-hover d-inline-block mb-3" to={"/albums/"+this.state.album.id+"/photos"}>Back</Link>
         <div className="row">
           <div className="col-md-6 col-12 order-md-2">
             <h3 className="color-red">{this.state.photo.title}</h3>
@@ -47,7 +49,7 @@ class DetailPhotos extends Component {
               {
                 this.state.user.map((user,id) => (
                   (user.id == this.state.album.userId) ?
-                    user.name : ''
+                    <Link className="remove-underline color-blue-sea color-red-hover" to={"/users/"+user.id}>{user.name}</Link> : ''
                 ))
               }
             </span></p>

@@ -26,7 +26,6 @@ class App extends Component {
                         <React.Fragment>
                           <Route path='/' component={ListUser} exact/>
                           <Route path="/users/:id" render={(routeProp) =>{
-                            console.log(routeProp.match,postsState);
                             return <DetailUser posts={postsState.posts} searchByUser={postsState.searchByUser} addPost={postsState.addPost} match={routeProp.match}/>
                           }}/>
                           <Route path="/posts/:id" render={(routeProp) =>{

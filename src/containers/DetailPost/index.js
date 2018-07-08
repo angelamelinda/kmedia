@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import _ from 'lodash';
-import {Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { Redirect } from 'react-router'
+import { Modal } from 'reactstrap';
+import { Redirect, Link } from 'react-router-dom'
 
 class DetailPost extends Component {
   constructor(props) {
     super(props);
     let postdata = props.searchById(this.props.match.params.id);
-    console.log(postdata, this.props.posts);
     this.state = {
       post : postdata.length == 0 ? -1 : postdata[0],
       comments:[],
@@ -36,10 +35,16 @@ class DetailPost extends Component {
   componentDidUpdate(){
     let postdata = this.props.searchById(this.props.match.params.id);
     if( !_.isEqual(postdata[0],this.state.post) ){
-        this.setState({
-          post:postdata.length == 0 ? -1 : postdata[0],
-          userId: postdata[0].userId
-        });
+        if(postdata.length == 0){
+            this.setState({
+                post:postdata[0],
+            });
+        } else {
+            this.setState({
+                post:postdata[0],
+                userId:postdata[0].userId
+            });
+        }
     }
   }
 
@@ -51,10 +56,8 @@ class DetailPost extends Component {
       name: this.input_comment_name.value,
       postId: this.state.post.id
     }
-    console.log(newcomment)
     let userCommentUrl = "https://jsonplaceholder.typicode.com/comments";
     axios.post(userCommentUrl, newcomment).then( resp => {
-      console.log(resp);
       this.setState({
         comments: [...this.state.comments,resp.data]
       });
@@ -87,8 +90,10 @@ class DetailPost extends Component {
   render() {
     return(
       <div className="page container pt-5 pb-5">
-            { this.state.post == -1 ?
+            { this.state.post == -1 || this.state.post == undefined ?
               <Redirect to={"/users/"+this.state.userId} /> :
+              <React.Fragment>
+              <Link to={"/users/"+this.state.userId} className="remove-underline mb-3 d-inline-block color-blue-sea color-red-hover">Back</Link>
               <div className="box-shadow-grey mb-3">
                 <div className="pt-3 pb-3 pl-3 pr-3 border-bottom">
                   <p className="font-weight-bold mb-0 color-red">{this.state.post.title}</p>
@@ -125,6 +130,7 @@ class DetailPost extends Component {
                   </form>
                 </div>
               </div>
+              </React.Fragment>
             }
       </div>
     )

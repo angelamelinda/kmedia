@@ -23,10 +23,8 @@ class Posts extends Component {
         isFetching: true
       });
       let userCommentUrl;
-      console.log(this.props.post,"AX");
       this.props.post.map((post,id) => {
         userCommentUrl = "https://jsonplaceholder.typicode.com/post/"+post.id+"/comments?_limit=3";
-        console.log(userCommentUrl);
         axios.get(userCommentUrl).then( resp => {
           let newComment = this.state.comment;
           if(this.state.comment[post.id] === undefined){
