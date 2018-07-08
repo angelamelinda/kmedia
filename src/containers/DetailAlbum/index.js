@@ -46,6 +46,13 @@ class DetailAlbum extends Component {
   render() {
     return(
       <div className="page container pt-5 pb-5">
+        {
+          this.state.users.map((user,id) => (
+            (user.id == this.state.detailAlbum.userId) ?
+              <Link className="remove-underline color-blue-sea color-red-hover d-inline-block mb-3" to={"/users/"+user.id}>Back</Link> : ''
+          ))
+        }
+
         <h3 className="color-red">Album {this.state.detailAlbum.title}</h3>
         <p className="border-bottom pb-3 mb-4">
           {
