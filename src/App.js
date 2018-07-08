@@ -5,6 +5,8 @@ import Header from './components/Header';
 import ListUser from './containers/ListUser';
 import DetailUser from './containers/DetailUser';
 import DetailAlbum from './containers/DetailAlbum';
+import DetailPhotos from './containers/DetailPhotos';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 class App extends Component {
@@ -19,6 +21,8 @@ class App extends Component {
               path="/users/:id" component={DetailUser}/>
             <Route
               path="/albums/:id/photos" component={DetailAlbum}/>
+            <Route
+              path="/photos/:id" component={DetailPhotos}/>
           </Switch>
         </div>
       </Router>
