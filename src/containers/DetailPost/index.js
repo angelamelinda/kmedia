@@ -116,9 +116,11 @@ class DetailPost extends Component {
                 </div>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                   <form onSubmit={this.updatePost} className="p-3">
+                    <label className="font-weight-bold color-red">Subject</label>
                     <input ref={(a) => this.input_subject_post = a} type="text" value={this.state.post.title} className="w-100 mb-2"/>
+                    <label className="font-weight-bold color-red">Body</label>
                     <textarea ref={(a) => this.input_body_post = a} cols="30" rows="10" className="w-100 mb-2">{this.state.post.body}</textarea>
-                    <button type="submit" className="w-100 background-color-blue-sea background-color-red-hover color-white"> Simpan</button>
+                    <button type="submit" className="w-100 background-color-blue-sea background-color-red-hover color-white">Save Post</button>
                   </form>
                 </Modal>
                 <div className="post-overview pb-3">
