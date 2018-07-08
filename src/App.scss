@@ -1,27 +1,38 @@
 @import '/assets/scss/variable.scss';
 
+a, button, input[type="submit"] {
+  transition: all .2s ease;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .background-color-blue-sea, .background-color-blue-sea-hover:hover {
-  background-color: $blue-sea;
+  background-color: $blue-sea!important;
 }
 
 .background-color-red, .background-color-red-hover:hover {
-  background-color: $red;
+  background-color: $red!important;
 }
 
 .color-blue-sea, .color-blue-sea-hover:hover {
-  color: $blue-sea;
+  color: $blue-sea!important;
 }
 
 .color-red, .color-red-hover:hover {
-  color: $red;
+  color: $red!important;
 }
 
 .color-dark-grey, .color-dark-grey-hover:hover {
-  color: $dark-grey;
+  color: $dark-grey!important;
 }
 
 .color-white, .color-white-hover:hover {
-  color: $white;
+  color: $white!important;
+}
+
+.color-black, .color-black-hover:hover {
+  color: $black!important;
 }
 
 .remove-underline, .remove-underline:hover {
