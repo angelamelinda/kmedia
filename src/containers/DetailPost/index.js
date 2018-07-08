@@ -12,7 +12,8 @@ class DetailPost extends Component {
       post : postdata.length == 0 ? -1 : postdata[0],
       comments:[],
       modal: false,
-      userId: postdata[0].userId
+      userId: postdata[0].userId,
+      isUpdating: false
     }
 
     let userCommentUrl = "https://jsonplaceholder.typicode.com/post/"+this.props.match.params.id+"/comments";
@@ -42,7 +43,8 @@ class DetailPost extends Component {
         } else {
             this.setState({
                 post:postdata[0],
-                userId:postdata[0].userId
+                userId:postdata[0].userId,
+                isUpdating:false
             });
         }
     }
@@ -73,6 +75,9 @@ class DetailPost extends Component {
       userId: this.state.post.userId
     }
     this.props.updatePost(newpost);
+    this.setState({
+        isUpdating:true
+    });
     this.toggle();
   }
 
@@ -90,6 +95,7 @@ class DetailPost extends Component {
   render() {
     return(
       <div className="page container pt-5 pb-5">
+          {this.state.isUpdating == true && <div className="loader d-flex align-items-center justify-content-center"><h2 className="color-white">Updating...</h2></div>}
             { this.state.post == -1 || this.state.post == undefined ?
               <Redirect to={"/users/"+this.state.userId} /> :
               <React.Fragment>
